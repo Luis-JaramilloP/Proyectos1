@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Página Web</title>
+    <style>
+        /* Estilos CSS (El diseño) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Sección Hero (Principal) */
+        .hero {
+            background-color: #ecf0f1;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Sección de Servicios */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .service-box {
+            flex-basis: 30%;
+            background: #f4f4f4;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h2>Mi Marca</h2>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Bienvenido a tu nueva página web</h1>
+        <p>Esta es una plantilla inicial creada por Gemini. Puedes modificar el texto y los colores a tu gusto.</p>
+        <button class="btn" onclick="saludar()">Haz clic aquí</button>
+    </section>
+
+    <section class="container">
+        <div class="services">
+            <div class="service-box">
+                <h3>Diseño Rápido</h3>
+                <p>Creamos estructuras limpias y eficientes.</p>
+            </div>
+            <div class="service-box">
+                <h3>Adaptable</h3>
+                <p>Se ve bien en móviles y computadoras.</p>
+            </div>
+            <div class="service-box">
+                <h3>Fácil de Editar</h3>
+                <p>Código comentado para facilitar cambios.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Derechos Reservados &copy; 2024</p>
+    </footer>
+
+    <script>
+        // JavaScript (Funcionalidad)
+        function saludar() {
+            alert("¡Hola! Tu página web está funcionando correctamente.");
+        }
+    </script>
+
+</body>
+</html>
