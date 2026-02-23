@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizz de futbol</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: #f4f4f9; }
+        .quiz-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        input { width: 80%; padding: 10px; margin: 15px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        .feedback { margin-top: 15px; font-weight: bold; }
+        .score { color: #666; font-size: 0.9rem; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-card">
+    <h2 id="pregunta-texto">Cargando pregunta...</h2>
+    <input type="text" id="respuesta-usuario" placeholder="Escribe tu respuesta">
+    <br>
+    <button onclick="comprobar()">Enviar Respuesta</button>
+    
+    <div id="feedback" class="feedback"></div>
+    <div id="puntuacion" class="score">Puntos: 0</div>
+</div>
+
+<script>
+    // 1. Tu base de datos de preguntas
+    const cuestionario = [
+        { pregunta: "¿Cuantas copas del mundo ha ganado Brasil?", respuesta: "5" },
+        { pregunta: "¿Cuantas copas del mundo ha ganado Argentina?", respuesta: "3" },
+        { pregunta: "¿Cuantas copas del mundo ha ganado Italia?", respuesta: "4" },
+        { pregunta: "¿Cuantas copas del mundo ha ganado España?", respuesta: "1" }
+    ];
+
+    let indiceActual = 0;
+    let puntos = 0;
+
+    const textoPregunta = document.getElementById("pregunta-texto");
+    const inputUsuario = document.getElementById("respuesta-usuario");
+    const feedback = document.getElementById("feedback");
+    const marcadorPuntos = document.getElementById("puntuacion");
+
+    // 2. Función para mostrar la pregunta actual
+    function cargarPregunta() {
+        if (indiceActual < cuestionario.length) {
+            textoPregunta.innerText = cuestionario[indiceActual].pregunta;
+            inputUsuario.value = ""; // Limpiar el input
+            feedback.innerText = ""; // Limpiar mensaje anterior
+        } else {
+            // Si ya no hay más preguntas
+            textoPregunta.innerText = "¡Juego terminado!";
+            inputUsuario.style.display = "none";
+            document.querySelector("button").style.display = "none";
+            feedback.innerText = `Puntaje final: ${puntos} de ${cuestionario.length}`;
+        }
+    }
+
+    // 3. Lógica con IF / ELSE y validación
+    function comprobar() {
+        let respuesta = inputUsuario.value.trim().toLowerCase();
+        let correcta = cuestionario[indiceActual].respuesta;
+
+        if (respuesta === correcta) {
+            puntos++;
+            feedback.innerText = "¡Correcto! 🌟";
+            feedback.style.color = "green";
+        } else {
+            feedback.innerText = `Incorrecto. Era: ${correcta} ❌`;
+            feedback.style.color = "red";
+        }
+
+        // Actualizar puntos y pasar a la siguiente pregunta tras un breve delay
+        marcadorPuntos.innerText = `Puntos: ${puntos}`;
+        indiceActual++;
+        
+        // Esperamos 1.5 segundos antes de cambiar la pregunta para que el usuario vea el feedback
+        setTimeout(cargarPregunta, 2000);
+    }
+
+    // Iniciar el quiz
+    cargarPregunta();
+</script>
+
+</body>
+</html>
